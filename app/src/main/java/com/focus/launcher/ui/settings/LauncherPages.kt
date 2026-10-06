@@ -256,7 +256,7 @@ internal fun FastAppsPage(settings: Settings, apps: List<AppEntry>, onBack: () -
         if (favorites.size < MAX_FAVORITES) {
             SettingRow("Add an app", value = "${favorites.size} / $MAX_FAVORITES", onClick = { adding = true })
         } else {
-            Note("That's the maximum. Five is plenty.")
+            Note("That's the maximum: $MAX_FAVORITES apps.")
         }
     }
 

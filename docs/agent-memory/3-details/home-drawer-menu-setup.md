@@ -88,7 +88,7 @@ Code: `ui/home/HomeScreen.kt`, `ui/home/HomeWidgets.kt`, `ui/drawer/DrawerScreen
    daily timers apply to them as to any other launch.
    Both are counted in `heightOf`.
 3. **Notices**, only when needed: "Finish setting up Focus →" and "Your weekly review is ready →".
-4. **Fast apps**: at most `MAX_FAVORITES = 5`, text only, aligned by `homeAlign`
+4. **Fast apps**: at most `MAX_FAVORITES = 8`, text only, aligned by `homeAlign`
    (left / center / right). Long-press = the app menu.
 5. **Corner shortcuts**: `leftShortcut` / `rightShortcut`. Defaults `auto:phone` → `ACTION_DIAL`
    and `auto:camera` → `INTENT_ACTION_STILL_IMAGE_CAMERA`, so they work whatever dialer or camera
@@ -154,7 +154,7 @@ Title = the app's name; the subtitle shows the system name if renamed, today's t
 1. **Uninstall**: `ACTION_DELETE package:…` (+ `EXTRA_USER` for work-profile apps); not offered
    for system apps. The system asks for confirmation; Focus never removes anything itself.
 2. **App info**: `LauncherApps.startAppDetailsActivity`.
-3. **Move to fast apps** / Remove from fast apps, with "n / 5". When full: "Fast apps are full",
+3. **Move to fast apps** / Remove from fast apps, with "n / 8". When full: "Fast apps are full",
    choose the one to replace.
 4. **App timer**: only if `canLimit`. Opens `TimerDialog`: the category default, No limit,
    presets, Custom…; the subtitle says how Focus classified the app (`describeCategory`).

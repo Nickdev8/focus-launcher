@@ -17,7 +17,7 @@ original project, not this fork's APK.
 [![Focus: a minimalist launcher for Android](docs/banner.png)](https://how2me.me/focusapp/)
 
 Focus is a minimalist launcher for Android: a text-only home screen built to be looked at as
-little as possible. No app icons, no colour: black and white, the time, up to five apps you chose,
+little as possible. No app icons, no colour: black and white, the time, up to eight apps you chose,
 and an honest picture of where the day went. It locks social apps and games when their daily time
 is up, and once a week it shows you the week you actually had.
 

@@ -2,7 +2,7 @@
 
 **focus-launcher-nick** is a text-only, strictly black-and-white Android launcher (Kotlin + Jetpack Compose, no
 Material, app ID `com.focus.launcher.nick`, Kotlin namespace `com.focus.launcher`, 36 Kotlin files, ~7,750 lines). Home = split clock (the
-time | the next events or screen time, one line between them), up to 5 fast apps, 2 corner shortcuts.
+time | the next events or screen time, one line between them), up to 8 fast apps, 2 corner shortcuts.
 Swipe left = searchable app list (sortable; Personal / Work tabs), swipe right = the phone's web
 search, double tap = lock. Social apps and games get daily timers that lock the app; a weekly
 review shows where the time went. Internet access reads only the configured laptop battery API; no app usage/calendar data is uploaded. Optional: an accessibility service

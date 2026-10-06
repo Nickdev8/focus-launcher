@@ -63,6 +63,13 @@ class SettingsMigrationTest {
         assertEquals(ClockStyle.RING, Settings.fromJson(chosen.toJson()).clockStyle)
     }
 
+    @Test fun `eight favorites survive storage and excess favorites are capped`() {
+        val favorites = (1..8).map { "example/app$it" }
+        assertEquals(favorites, Settings.fromJson(Settings(favorites = favorites).toJson()).favorites)
+        val tooMany = Settings(favorites = favorites + "example/app9")
+        assertEquals(favorites, Settings.fromJson(tooMany.toJson()).favorites)
+    }
+
     @Test fun `settings survive a round trip`() {
         val s = Settings(clockStyle = ClockStyle.SPLIT, splitSide = SplitSide.SCREEN_TIME, showCalendar = true, doubleTapLock = false, musicAutoHide = false)
         assertEquals(s, Settings.fromJson(s.toJson()))

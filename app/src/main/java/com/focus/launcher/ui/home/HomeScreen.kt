@@ -92,7 +92,7 @@ import java.time.LocalDate
 
 /**
  * Page one of the launcher. Top to bottom: the clock, today's screen time in plain words under it,
- * the optional calendar section, up to five fast apps, and the two corner shortcuts. Text only.
+ * the optional calendar section, up to eight fast apps, and the two corner shortcuts. Text only.
  *
  * Gestures on empty space: long-press opens settings, swipe down pulls the notification shade,
  * swipe up jumps to search, double-tap locks the phone. Swiping left (handled by the pager that

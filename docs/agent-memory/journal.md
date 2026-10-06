@@ -877,3 +877,37 @@ payload logging. 40 tests passed including fabricated parser/freshness cases; li
 passed. Dedicated worker owned repository/parser tests; parent handled UI and integration.
 **Open:** no phone update or device UI verification; changes remain uncommitted. Upstream
 publication scripts still reject internet-enabled APKs and are not for this fork.
+
+## 2026-10-06 · Install latest fork update via ADB
+
+**Asked:** update the phone via ADB.
+**Done:** verified APK signature, then installed the latest release APK with
+`adb install --user 0 -r`, preserving existing app data and signing identity.
+**Verified:** installation returned Success; installed version 1.1.56, INTERNET permission
+present/granted, fork still default home, recent crash buffer contained zero fork entries.
+**Open:** visual device behavior and individual settings were not inspected; no data cleared.
+
+## 2026-10-06 · Locate system-theme option
+**Asked:** locate Follow system dark-mode choice.
+**Verified:** Appearance → Theme uses all ThemeChoice entries, including Follow system;
+local APK identity matches the latest installed build. Reopened the fork's Appearance page
+by explicit intent with NEW_TASK/CLEAR_TASK so an existing settings task cannot ignore the
+route extra. Saved preferences were not changed. Theme selection remains the user's choice.
+
+## 2026-10-06 · Increase home fast-app limit to eight
+**Asked:** expand the five-app limit to eight.
+**Done:** raised shared MAX_FAVORITES to 8, updating storage/picker/menu limits and counters;
+replaced the hardcoded five-app capacity message and updated current documentation. Existing
+home fit already counts actual favorite rows, so eight apps use its adaptive sizing.
+**Verified:** 41 tests passed including eight-favorite persistence and ninth-entry capping;
+lint 0 errors/10 warnings; optimized release APK built; diff whitespace check passed.
+**Open:** no phone installation or device layout verification performed for this change.
+
+## 2026-10-06 · Install and commit eight-app update
+**Asked:** update the phone and use yeet for a local commit.
+**Done:** installed the tested eight-app release with `adb install --user 0 -r`; prepared all
+current source, tests, README, and memory changes for one local commit.
+**Verified:** installation returned Success; fork remains default home; recent crash buffer
+contained zero fork entries. Diff whitespace passed. Prior build checks: 41 passing tests,
+lint 0 errors/10 warnings. No tests repeated for the commit-only task.
+**Open:** no push or PR requested; visual device layout remains unverified.

@@ -155,3 +155,7 @@ state, and matching monochrome phone/laptop icons. Read laptop values from his p
 device-state API; phone values remain local Android readings. This explicitly authorizes
 Internet access and these device icons for the fork. Keep changes local pending installation
 request. No settings resets.
+
+## 2026-10-06 · Eight home apps
+Nick requested increasing the fast-app limit from five to eight. Use the shared
+`MAX_FAVORITES` value for pickers, storage limits, counters, and maximum-capacity copy.

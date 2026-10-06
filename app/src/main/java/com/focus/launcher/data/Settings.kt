@@ -37,7 +37,7 @@ enum class DrawerSort(val label: String) { ALPHA("A–Z"), MOST_USED("Most used"
 
 enum class TimeFormat(val label: String) { SYSTEM("Follow system"), H24("24-hour"), H12("12-hour") }
 
-const val MAX_FAVORITES = 5
+const val MAX_FAVORITES = 8
 
 /** Corner shortcuts that resolve to whatever the phone's default dialer / camera is. */
 const val SHORTCUT_PHONE = "auto:phone"
