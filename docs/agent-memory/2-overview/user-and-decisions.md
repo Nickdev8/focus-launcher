@@ -138,3 +138,8 @@ Nick asked to inspect the Claude setup and move it to Codex. Root `AGENTS.md` no
 standing instructions; all inherited project memory lives in `docs/agent-memory/`. Historical
 owner decisions remain context, not authorization for new external actions. Follow Nick's
 current preferences: lean coding, concise conversation, human-only commit authorship.
+
+## 2026-10-06 · Nick's launcher fork
+Nick asked to rename the app to `focus-launcher-nick` and install it on the connected phone
+to use instead of upstream. The fork uses `com.focus.launcher.nick` for independent installation
+and updates. Default home and optional special-access grants are selected on the phone.

@@ -1,5 +1,15 @@
 # Tier 2 · Building, installing and verifying on the owner's phone
 
+## Current fork (2026-10-06)
+Nick requested installation of **focus-launcher-nick**, app ID `com.focus.launcher.nick`.
+Use `:app:assembleRelease` for the optimized, locally debug-key-signed fork APK, then
+`adb install --user 0 -r app/build/outputs/apk/release/app-release.apk`. Component names are
+`com.focus.launcher.nick/com.focus.launcher.MainActivity` and
+`com.focus.launcher.nick/com.focus.launcher.SettingsActivity`. A separate application ID means
+fresh settings and grants; select it manually in Android's default home settings. Do not
+uninstall the original app or bypass signing checks. The device/build history below is upstream
+context and does not establish this fork's installed state or signing requirements.
+
 Device: the owner's everyday Android 16 phone, 360 × 797 dp (1080p class, high refresh rate), with
 Focus as its default home. It has more than one Android user, one of them a **managed work
 profile**. Model, serial and the user list: `private/device.md` (not committed).

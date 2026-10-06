@@ -1,5 +1,8 @@
 # Tier 2 · The app
 
+Current fork: **focus-launcher-nick**, app ID `com.focus.launcher.nick`. Kotlin namespace
+remains `com.focus.launcher`; task affinities use `${applicationId}` to isolate the fork.
+
 Kotlin 2.3.21, Compose BOM 2026.06.01 (foundation + ui + animation only, **no Material**), AGP
 8.13.2, Gradle 8.14.3, compileSdk/targetSdk 36, minSdk 26. One process; activities and the
 accessibility service share state through `Graph` (a hand-rolled service locator).
@@ -39,7 +42,6 @@ ui/     theme/ components/ home/ drawer/ block/ review/ settings/   + Launching.
 | Swipe right on home = the phone's web search | `MainActivity.kt` `Launcher` (pointerInput on the pager), `ui/Launching.kt` `openWebSearch`, `Settings.swipeRightSearch` |
 | Double tap = lock (default on; needs the accessibility service) | `HomeScreen.kt`, `Settings.doubleTapLock`, `FocusAccessibilityService` |
 | Long-press menu, timer dialog | `ui/drawer/AppMenu.kt` |
-<<<<<<< HEAD
 | Music and note sections on home (text, lines between sections, off by default). **Music is only there while something plays** (+1 min after it stops; `Settings.musicAutoHide`, owner 2026-09-20) | `HomeWidgets.kt` `MusicState`, `rememberMusicState`, `MusicSection`, `NoteSection`; `ui/home/MusicLinger.kt` (pure rule, tested); `service/MediaListener.kt`; toggles in `LauncherPages.kt` `HomePage` |
 | Welcome screen (once) and learn-by-doing tips on the home screen | `ui/settings/WelcomePage.kt` (route `welcome`), `data/AppState.kt` `Tip` / `did()` / `tutorialSeen`; hooks in `HomeScreen.kt`, `MainActivity.kt`; drawer hint in `DrawerScreen.kt` |
 | Fast apps (≤5), corner shortcuts, home gestures, notices | `ui/home/HomeScreen.kt` |

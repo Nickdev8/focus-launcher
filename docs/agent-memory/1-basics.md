@@ -1,14 +1,15 @@
 # Tier 1 · Basics (read all of it, every time)
 
-**Focus** is a text-only, strictly black-and-white Android launcher (Kotlin + Jetpack Compose, no
-Material, package `com.focus.launcher`, 36 Kotlin files, ~7,750 lines). Home = split clock (the
+**focus-launcher-nick** is a text-only, strictly black-and-white Android launcher (Kotlin + Jetpack Compose, no
+Material, app ID `com.focus.launcher.nick`, Kotlin namespace `com.focus.launcher`, 36 Kotlin files, ~7,750 lines). Home = split clock (the
 time | the next events or screen time, one line between them), up to 5 fast apps, 2 corner shortcuts.
 Swipe left = searchable app list (sortable; Personal / Work tabs), swipe right = the phone's web
 search, double tap = lock. Social apps and games get daily timers that lock the app; a weekly
 review shows where the time went. No INTERNET permission. Optional: an accessibility service
 (locks an app mid-session, locks the screen) and a notification listener (the song's name).
 
-**Owner:** Chaitany (GitHub `patelchaitany`). His phone runs Android 16 with Focus as its default
+**Current maintainer:** Nick. This fork has a separate app identity and independent settings/grants.
+**Historical upstream owner:** Chaitany (GitHub `patelchaitany`). His phone runs Android 16 with Focus as its default
 launcher. He wants things done end to end and verified, and honest reports of what was not.
 
 **This brain is public** (it is committed; the repo is public). Anything about his server, his
@@ -16,7 +17,7 @@ device or what is on his phone lives only in the git-ignored `private/` folder n
 
 ## Rules that prevent damage
 1. **The phone is in use while you test.** Never inject blind taps or swipes. Open screens by
-   intent; screenshot only when `topResumedActivity` is `com.focus.launcher/`.
+   intent; screenshot only when `topResumedActivity` is `com.focus.launcher.nick/`.
 2. **Never grant special access over adb** (usage access, accessibility, notification access,
    default home). The in-app Setup page sends the owner to each switch.
 3. **The repo is public.** Before every push, run the audit in `2-overview/github-and-release.md`.
@@ -55,7 +56,7 @@ device or what is on his phone lives only in the git-ignored `private/` folder n
 ./gradlew :app:testDebugUnitTest :app:lintDebug      # must stay: all tests pass, lint 0 errors
 ./gradlew :app:assembleRelease                        # optimized, DEBUG-key signed: CI and emulators only
 adb install --user 0 -r build/clean/focus-launcher-<version>.apk   # owner's phone: release key, --user 0
-adb shell cmd package compile -m speed-profile -f com.focus.launcher
+adb shell cmd package compile -m speed-profile -f com.focus.launcher.nick
 FOCUS_APK=$(site/clean-build.sh | tail -1) site/deploy.sh   # public APK from a CLEAN checkout + site
 ```
 Three build types: `debug`, `release` (debug key), `dist` (release key: public *and* the owner's

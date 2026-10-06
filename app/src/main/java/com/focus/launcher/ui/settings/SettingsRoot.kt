@@ -147,7 +147,7 @@ fun SettingsRoot(settings: Settings, startRoute: String?, onExit: () -> Unit) {
 
 @Composable
 private fun MainPage(settings: Settings, appCount: Int, status: SetupStatus, onBack: () -> Unit, go: (String) -> Unit) {
-    Page("Focus", onBack) {
+    Page("focus-launcher-nick", onBack) {
         VSpace(6.dp)
         SettingRow(
             "Setup",
@@ -184,7 +184,7 @@ private fun AboutPage(onBack: () -> Unit, go: (String) -> Unit) {
     Page("About", onBack) {
         SettingRow("Welcome screen and tips", subtitle = "Shows the tips on the home screen again, one at a time.", onClick = { go(Routes.WELCOME) })
         Column(Modifier.padding(horizontal = 24.dp, vertical = 12.dp)) {
-            T("Focus ${BuildConfig.VERSION_NAME}", size = 20.sp, weight = FontWeight.Medium)
+            T("focus-launcher-nick ${BuildConfig.VERSION_NAME}", size = 20.sp, weight = FontWeight.Medium)
             VSpace(12.dp)
             T(
                 "A launcher with nothing to look at. No icons, no colour, no feed: the time, the few apps you " +

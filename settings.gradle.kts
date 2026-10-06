@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FocusLauncher"
+rootProject.name = "focus-launcher-nick"
 include(":app")

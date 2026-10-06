@@ -26,7 +26,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.focus.launcher"
+        applicationId = "com.focus.launcher.nick"
         minSdk = 26
         targetSdk = 36
         // 1.1 was published with versionCode 2; commit counts passed that long ago.

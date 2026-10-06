@@ -1,4 +1,16 @@
-# Focus
+# focus-launcher-nick
+
+Nick's fork of Focus. App ID: `com.focus.launcher.nick`; Kotlin namespace remains
+`com.focus.launcher`. Install an optimized local build with:
+
+```bash
+./gradlew :app:testDebugUnitTest :app:lintDebug :app:assembleRelease
+adb install --user 0 -r app/build/outputs/apk/release/app-release.apk
+```
+
+Choose **focus-launcher-nick** in Android's default home app settings. It has separate settings
+and permissions from the original app. Website and upstream release links below refer to the
+original project, not this fork's APK.
 
 **Reclaim your time. Spend it touching some grass.**
 
@@ -134,7 +146,7 @@ Requirements: JDK 17–21 and the Android SDK with platform 36.
 ./gradlew :app:assembleRelease    # R8-optimised build (~1.3 MB), signed with the debug key
 ./gradlew :app:testDebugUnitTest  # usage state machine + emoji stripping
 adb install --user 0 -r app/build/outputs/apk/release/app-release.apk   # --user 0: personal profile only, not a work profile
-adb shell cmd package compile -m speed-profile -f com.focus.launcher   # optional: precompile right away
+adb shell cmd package compile -m speed-profile -f com.focus.launcher.nick   # optional: precompile right away
 ```
 
 **Use the release build for daily use.** Compose is markedly slower in debuggable builds; swipes
@@ -179,9 +191,9 @@ Debug builds additionally export `ReviewActivity` and `BlockActivity`
 (`app/src/debug/AndroidManifest.xml`) so they can be opened from adb:
 
 ```bash
-adb shell am start -n com.focus.launcher/.SettingsActivity --es route timers
-adb shell am start -n com.focus.launcher/.ReviewActivity
-adb shell am start -n com.focus.launcher/.BlockActivity --es package com.instagram.android --el used 1860000 --ei limit 30 --ez preview true
+adb shell am start -n com.focus.launcher.nick/com.focus.launcher.SettingsActivity --es route timers
+adb shell am start -n com.focus.launcher.nick/com.focus.launcher.ReviewActivity
+adb shell am start -n com.focus.launcher.nick/com.focus.launcher.BlockActivity --es package com.instagram.android --el used 1860000 --ei limit 30 --ez preview true
 ```
 
 ## Website and public download
@@ -292,8 +304,8 @@ matters more than anything else. Measured on a OnePlus (Android 16), release bui
 To check for yourself:
 
 ```bash
-adb shell dumpsys meminfo com.focus.launcher | grep -E "Java Heap:|Native Heap:|Code:|Graphics:|TOTAL PSS:"
-adb shell dumpsys gfxinfo com.focus.launcher | grep "Total frames rendered"   # run twice, 10 s apart, screen idle
+adb shell dumpsys meminfo com.focus.launcher.nick | grep -E "Java Heap:|Native Heap:|Code:|Graphics:|TOTAL PSS:"
+adb shell dumpsys gfxinfo com.focus.launcher.nick | grep "Total frames rendered"   # run twice, 10 s apart, screen idle
 ```
 
 ## Code map
