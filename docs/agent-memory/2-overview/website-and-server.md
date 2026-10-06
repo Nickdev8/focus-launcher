@@ -16,8 +16,8 @@ site/build.sh              → site/public/: fills placeholders, copies the dist
 site/deploy.sh             build → tar over ssh → re-download APK and compare sha256 → IndexNow ping
 site/deploy.env            FOCUS_DEPLOY_HOST / FOCUS_DEPLOY_KEY (git-ignored; see deploy.env.example)
 ```
-Deploy: `./gradlew :app:assembleDist && site/deploy.sh`. Preview locally with the launch config
-`focus-site` (`.claude/launch.json`, a static file server on port 4173).
+Deploy: `./gradlew :app:assembleDist && site/deploy.sh`. After building the site, preview locally with
+`python3 -m http.server 4173 --directory site/public`.
 
 ## The server (be surgical)
 The owner's own Linux VM running nginx. It is **shared with his other projects**, so nothing

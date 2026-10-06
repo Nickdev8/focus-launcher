@@ -7,12 +7,12 @@ topics set (minimalist-launcher, android-launcher, app-blocker, …).
 ## What is deliberately not in the repo
 All git-ignored and verified absent from raw.githubusercontent.com:
 `keystore.properties` · `local.properties` · `site/deploy.env` · `site/public/` (generated, holds
-the APK) · everything in `.claude/` **except** `CLAUDE.md` and the brain · every `private/` folder
+the APK) · local agent configuration in `.claude/` and `.codex/` · every `private/` folder
 inside a brain · build output. The committed template for the deploy target is
 `site/deploy.env.example`.
 
 The brain itself **is** committed (owner's decision, 2026-09-19). That is why it must never contain
-what the list in `.claude/CLAUDE.md` → "The brain is public" forbids.
+what the list in `AGENTS.md` → "The brain is public" forbids.
 
 ## Before every push (publishing cannot be undone)
 ```bash
@@ -22,7 +22,7 @@ git diff --cached --name-only | grep -E "keystore\.properties|local\.properties|
 # 2. no forbidden content: generic patterns ...
 git diff --cached | grep -cE "^\+.*(/Users[/]|(storePassword|keyPassword)[=][^%\$\"' ]|PRIVATE[ ]KEY)"   # brackets: so this line does not match itself; a value after "=" counts, a %s or $VAR does not
 # 3. ... and the owner-specific ones, kept out of the repo on purpose (count only, never print matches)
-git diff --cached | grep -cEf .claude/brain/chaitany-claude/private/audit-patterns.txt
+git diff --cached | grep -cEf docs/agent-memory/private/audit-patterns.txt
 ```
 Step 1 must print nothing; steps 2 and 3 must print `0`. Step 3 uses `-c` so that a hit is never
 echoed into a log. A `0` only means something if there was input: `git diff --cached | wc -l`
@@ -32,8 +32,8 @@ commit and push. No force-pushes to `main` without being asked.
 
 ## Commits
 Use the owner's global git identity as configured on his machine (the author address is visible
-in public history; he was told about GitHub's noreply alternative). End every commit message with
-the `Co-Authored-By:` line the session instructions specify. Commit or push only when asked, or as
+in public history; he was told about GitHub's noreply alternative). Use only the human author information provided by the user. Never add Copilot or any
+agent as a co-author, contributor, trailer, or additional author. Commit or push only when asked, or as
 the closing step of a change he asked to have published.
 
 ## Signing and the three builds

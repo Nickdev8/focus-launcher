@@ -1,6 +1,6 @@
 # Tier 3 · Keeping this brain true, complete and publishable
 
-The rules are in `.claude/CLAUDE.md`. This file is the how.
+The rules are in `AGENTS.md`. This file is the how.
 
 ## What "up to date" means here
 The owner asked twice on 2026-09-19: first for the brain, then for it to hold **everything done
@@ -10,7 +10,7 @@ things:
    `2-overview/app.md` → "Features and where they live" and the five Tier 2 files; anything built
    or decided that appears nowhere gets written down.
 2. **Truth**: what is written still matches the code, the repo and the live site (commands below).
-3. **Publishability**: nothing that belongs in `private/` (rules in `.claude/CLAUDE.md`).
+3. **Publishability**: nothing that belongs in `private/` (rules in `AGENTS.md`).
 
 ## Fact-check commands (all read-only; run from the repo root)
 ```bash

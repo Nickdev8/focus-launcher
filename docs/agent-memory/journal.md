@@ -2,7 +2,7 @@
 
 One entry per finished piece of work: what was asked, what was done, what was verified and how,
 what is still open. Facts that stay true belong in the tiers; this is the record of *when* and
-*why*. This file is public: no server, device or phone specifics (see `.claude/CLAUDE.md`).
+*why*. This file is public: no server, device or phone specifics (see `AGENTS.md`).
 
 ---
 
@@ -817,3 +817,19 @@ td, th, figcaption, h2, summary`, the facts and the footer outside `.phone`:
 **Lesson kept:** he stopped a tool call that was only waiting for CI. Do not block a turn on a
 CI run he did not ask to wait for; start what he asked for and check CI afterwards.
 
+
+## 2026-10-06 · Claude setup migrated to Codex
+
+**Asked:** Nick requested inspection of the project's Claude setup and migration to Codex.
+**Done:** replaced `.claude/CLAUDE.md` with concise root `AGENTS.md`; moved all 24 memory
+files to `docs/agent-memory/`, updated active pointers, preserved historical journal entries,
+and retained the tiered read/update and public/private rules. Updated ignore rules, journal
+union merge attribute, and both Build workflow path exclusions. Replaced the unavailable
+Claude launch configuration with a portable local preview command. Removed the inherited
+co-author instruction in favor of Nick's human-only commit author preference.
+**Verified:** checked all 24 source/destination paths and preserved contents against HEAD;
+checked active memory pointers, private-file ignore rules, public-file trackability,
+`merge=union`, both workflow exclusions, and `git diff --check`. Consulted official Codex
+AGENTS.md documentation. App tests were not run: no application code changed.
+**Open:** changes are local, uncommitted. Historical device, release, and deployment claims
+have not been reverified; no private notes or Claude tool configurations existed to migrate.

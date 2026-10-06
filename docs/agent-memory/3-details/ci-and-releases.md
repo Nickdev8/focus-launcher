@@ -5,7 +5,7 @@ Asked for by the owner on 2026-09-19: "have release page where we have the apk a
 
 ## CI: `.github/workflows/build.yml`
 - Runs on every push to `main`, every pull request, and by hand (`workflow_dispatch`). Changes
-  that touch only `.claude/**`, `**.md` or `site/**` do not trigger it: they cannot change the APK,
+  that touch only `.claude/**`, `.codex/**`, `docs/agent-memory/**` or `**.md` do not trigger it: they cannot change the APK,
   and most commits here are brain-only.
 - Steps: checkout → Temurin JDK 21 → `gradle/actions/setup-gradle` (caching) →
   `:app:testDebugUnitTest :app:lintDebug` → `:app:assembleRelease` → the APK is renamed

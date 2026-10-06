@@ -12,9 +12,9 @@ on:
   push:
     branches: [main]
     # Notes and the agent's brain change neither the APK nor the site.
-    paths-ignore: ['.claude/**', '**.md']
+    paths-ignore: ['.claude/**', '.codex/**', 'docs/agent-memory/**', '**.md']
   pull_request:
-    paths-ignore: ['.claude/**', '**.md']
+    paths-ignore: ['.claude/**', '.codex/**', 'docs/agent-memory/**', '**.md']
   workflow_dispatch:
 
 permissions:

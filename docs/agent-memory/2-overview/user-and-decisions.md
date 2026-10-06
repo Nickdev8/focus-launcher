@@ -132,3 +132,9 @@ else *unsure* and left alone. Details: `3-details/app-classification.md`.
     "full" and one without the two services (two builds to publish and explain).
 22. "Unknown developer" warnings, as opposed to the sensitive-data block, are reputation, not
     permissions: only time, or Google's appeal form filed by him, changes them.
+
+## 2026-10-06 · Codex migration (current maintainer: Nick)
+Nick asked to inspect the Claude setup and move it to Codex. Root `AGENTS.md` now supplies
+standing instructions; all inherited project memory lives in `docs/agent-memory/`. Historical
+owner decisions remain context, not authorization for new external actions. Follow Nick's
+current preferences: lean coding, concise conversation, human-only commit authorship.

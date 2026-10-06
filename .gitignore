@@ -18,9 +18,7 @@ site/public/
 # machine-specific deployment target
 site/deploy.env
 
-# .claude: the agent's instructions and brain are part of the project and are committed.
-# Local tooling, and the brain's private notes (server, device, anything personal), are not.
-.claude/*
-!.claude/CLAUDE.md
-!.claude/brain/
-.claude/brain/*/private/
+# Agent instructions and public memory are committed; local settings and private notes are not.
+.claude/
+.codex/
+docs/agent-memory/private/

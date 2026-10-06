@@ -1,7 +1,9 @@
-# The brain of `chaitany-claude`
+# Focus launcher project memory for Codex
 
-Long-term, written memory for the agent working on the Focus launcher for Chaitany Patel.
-The rules for reading and updating it are in `.claude/CLAUDE.md` and are mandatory.
+Long-term, written memory inherited from the Claude setup for the Focus launcher.
+Migrated to Codex on 2026-10-06 at Nick's request. Historical entries retain their original
+owner context and old paths; current instructions and paths are in root `AGENTS.md`.
+The rules for reading and updating it are in `AGENTS.md` and are mandatory.
 
 **This brain is public.** It is committed to a public repository by the owner's decision
 (2026-09-19). Nothing secret, nothing about the owner's server or device, and nothing observed on
