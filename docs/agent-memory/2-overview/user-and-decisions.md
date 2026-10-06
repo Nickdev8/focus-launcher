@@ -143,3 +143,15 @@ current preferences: lean coding, concise conversation, human-only commit author
 Nick asked to rename the app to `focus-launcher-nick` and install it on the connected phone
 to use instead of upstream. The fork uses `com.focus.launcher.nick` for independent installation
 and updates. Default home and optional special-access grants are selected on the phone.
+
+## 2026-10-06 · System theme and preserving settings
+Nick requested **Follow system** alongside Black and White under Appearance → Theme. Implement
+and verify locally; do not update the phone until asked. Future installs must update in place
+with the same app ID and signing key to preserve settings; do not uninstall or clear app data.
+
+## 2026-10-06 · Laptop battery on split clock
+Nick requested a laptop battery line below the phone battery, with percentages, charging
+state, and matching monochrome phone/laptop icons. Read laptop values from his provided
+device-state API; phone values remain local Android readings. This explicitly authorizes
+Internet access and these device icons for the fork. Keep changes local pending installation
+request. No settings resets.

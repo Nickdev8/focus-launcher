@@ -101,6 +101,7 @@ import java.time.LocalDate
 @Composable
 fun HomeScreen(
     settings: Settings,
+    active: Boolean,
     apps: List<AppEntry>,
     today: DayUsage?,
     usageAccess: Boolean,
@@ -256,7 +257,7 @@ fun HomeScreen(
         val splitTimeSp = ((halfWidth - amPmWidth) / emsWide / textScale).coerceIn(30f, 56f)
 
         fun heightOf(fit: Fit): Float {
-            val splitClock = (splitTimeSp * 1.2f + 42f) * textScale + 16f
+            val splitClock = (splitTimeSp * 1.2f + 60f) * textScale + 16f
             val splitSide = if (sideCalendar) eventCount.coerceIn(1, 2) * 44f * textScale + 16f else 86f * textScale + 16f
             val clock = when (settings.clockStyle) {
                 ClockStyle.RING -> fit.ring.value
@@ -306,6 +307,7 @@ fun HomeScreen(
             if (split) {
                 SplitClockRow(
                     settings = settings,
+                    active = active,
                     now = now,
                     timeSize = splitTimeSp.sp,
                     onTap = clockTap,

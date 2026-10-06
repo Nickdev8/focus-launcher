@@ -3,6 +3,16 @@ package com.focus.launcher.data
 import org.json.JSONArray
 import org.json.JSONObject
 
+enum class ThemeChoice(val label: String) {
+    BLACK("Black"), WHITE("White"), SYSTEM("Follow system");
+
+    fun isDark(systemDark: Boolean): Boolean = when (this) {
+        BLACK -> true
+        WHITE -> false
+        SYSTEM -> systemDark
+    }
+}
+
 enum class FontChoice(val label: String) { SANS("Sans"), SERIF("Serif"), MONO("Mono") }
 
 /**
@@ -48,7 +58,7 @@ const val TAP_NOTHING = "tap:none"
  */
 data class Settings(
     // Appearance
-    val dark: Boolean = true,
+    val theme: ThemeChoice = ThemeChoice.BLACK,
     val font: FontChoice = FontChoice.SANS,
     val textScale: Float = 1f,
     val hideStatusBar: Boolean = false,
@@ -132,7 +142,7 @@ data class Settings(
 ) {
     fun toJson(): JSONObject = JSONObject().apply {
         put("v", SCHEMA)
-        put("dark", dark)
+        put("theme", theme.name)
         put("font", font.name)
         put("textScale", textScale.toDouble())
         put("hideStatusBar", hideStatusBar)
@@ -198,7 +208,7 @@ data class Settings(
         fun fromJson(o: JSONObject): Settings {
             val d = Settings()
             return Settings(
-                dark = o.optBoolean("dark", d.dark),
+                theme = enumOr(o.optString("theme"), if (o.optBoolean("dark", true)) ThemeChoice.BLACK else ThemeChoice.WHITE),
                 font = enumOr(o.optString("font"), d.font),
                 textScale = o.optDouble("textScale", d.textScale.toDouble()).toFloat().coerceIn(0.8f, 1.4f),
                 hideStatusBar = o.optBoolean("hideStatusBar", d.hideStatusBar),

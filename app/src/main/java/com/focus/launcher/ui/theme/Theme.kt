@@ -1,5 +1,6 @@
 package com.focus.launcher.ui.theme
 
+import android.content.res.Configuration
 import android.os.Build
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -8,6 +9,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.IndicationNodeFactory
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.InteractionSource
@@ -16,8 +18,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.activity.compose.LocalActivity
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.BlendMode
@@ -73,8 +77,11 @@ val LocalFocusFont = staticCompositionLocalOf<FontFamily> { FontFamily.Default }
 val LocalTextScale = staticCompositionLocalOf { 1f }
 
 @Composable
-fun FocusTheme(settings: Settings, content: @Composable () -> Unit) {
-    val colors = if (settings.dark) BlackTheme else WhiteTheme
+fun FocusTheme(settings: Settings, hideStatusBar: Boolean = false, content: @Composable () -> Unit) {
+    val dark = settings.theme.isDark(isSystemInDarkTheme())
+    val activity = LocalActivity.current as? ComponentActivity
+    LaunchedEffect(activity, dark, hideStatusBar) { activity?.applyFocusWindow(dark, hideStatusBar) }
+    val colors = if (dark) BlackTheme else WhiteTheme
     val font = when (settings.font) {
         FontChoice.SANS -> FontFamily.Default
         FontChoice.SERIF -> FontFamily.Serif
@@ -88,6 +95,11 @@ fun FocusTheme(settings: Settings, content: @Composable () -> Unit) {
     ) {
         Box(Modifier.fillMaxSize().background(colors.bg)) { content() }
     }
+}
+
+fun ComponentActivity.applyFocusWindow(settings: Settings, hideStatusBar: Boolean = false) {
+    val systemDark = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+    applyFocusWindow(settings.theme.isDark(systemDark), hideStatusBar)
 }
 
 /** Transparent bars over a black (or white) window, and the optional hidden status bar. */

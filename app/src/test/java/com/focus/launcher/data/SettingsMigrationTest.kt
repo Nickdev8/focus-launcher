@@ -11,6 +11,34 @@ import org.junit.Test
  */
 class SettingsMigrationTest {
 
+    @Test fun `legacy black and white choices survive theme migration`() {
+        for (dark in listOf(true, false)) {
+            val old = Settings(favorites = listOf("example/app"), textScale = 1.2f).toJson()
+                .apply { remove("theme"); put("dark", dark) }
+            val migrated = Settings.fromJson(old)
+            assertEquals(if (dark) ThemeChoice.BLACK else ThemeChoice.WHITE, migrated.theme)
+            assertEquals(listOf("example/app"), migrated.favorites)
+            assertEquals(1.2f, migrated.textScale)
+        }
+    }
+
+    @Test fun `theme choices persist and explicit choice takes precedence over legacy dark`() {
+        for (theme in ThemeChoice.entries) {
+            val chosen = Settings(theme = theme)
+            assertEquals(chosen, Settings.fromJson(chosen.toJson().put("dark", false)))
+        }
+        assertEquals(ThemeChoice.BLACK, Settings.fromJson(JSONObject()).theme)
+        assertEquals(ThemeChoice.WHITE, Settings.fromJson(JSONObject().put("theme", "UNKNOWN").put("dark", false)).theme)
+    }
+
+    @Test fun `system theme follows both system states while explicit choices stay fixed`() {
+        for (systemDark in listOf(true, false)) {
+            assertEquals(systemDark, ThemeChoice.SYSTEM.isDark(systemDark))
+            assertEquals(true, ThemeChoice.BLACK.isDark(systemDark))
+            assertEquals(false, ThemeChoice.WHITE.isDark(systemDark))
+        }
+    }
+
     private fun stored(version: Int?, style: String?): JSONObject = Settings().toJson().apply {
         if (version == null) remove("v") else put("v", version)
         if (style == null) remove("clockStyle") else put("clockStyle", style)

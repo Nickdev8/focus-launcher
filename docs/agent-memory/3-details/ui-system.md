@@ -4,6 +4,12 @@ Compose **foundation + ui + animation only**. No Material: nothing may bring in 
 icons. Everything is built from a handful of primitives.
 
 ## Palette and primitives
+Appearance offers **Black**, **White**, and **Follow system** (`ThemeChoice`). Existing stored
+`dark` booleans migrate to the matching explicit choice; new settings persist `theme`. Default
+remains Black. `FocusTheme` resolves System through `isSystemInDarkTheme()` and reapplies window
+colors/bars on resolved-theme changes for every activity, including the timer wall. Home alone
+passes its hide-status-bar preference. Startup window colors resolve Android's configuration.
+
 `ui/theme/Theme.kt`: `FocusColors(bg, fg, dim, faint, line)`; `BlackTheme` (#000/#FFF/8E8E8E/
 565656/2A2A2A) and `WhiteTheme` (inverted). Locals: `LocalFocusColors`, `LocalFocusFont`
 (Default / Serif / Monospace), `LocalTextScale`. `applyFocusWindow()` = edge-to-edge, window
@@ -17,7 +23,7 @@ Today / Week and the drawer's Personal / Work; moved here from `ReviewScreen.kt`
 `MultiChoiceDialog`, `ConfirmDialog`, `TextInputDialog(numeric)`, `UnderlinedField`,
 `AppPickerDialog(leading=…)`.
 
-**Drawn signs** (the only ones): `WorkBadge` and the music section's three buttons
+**Drawn signs**: phone/laptop battery outlines (`DeviceBatteryLines.kt`), `WorkBadge` and the music section's three buttons
 (`MediaGlyph`, `HomeWidgets.kt`). Canvas shapes in the text colour with a `contentDescription`;
 never the Unicode characters, which many phones turn into colour emoji.
 

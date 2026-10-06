@@ -39,8 +39,18 @@ Run the pre-push audit in `docs/agent-memory/2-overview/github-and-release.md` b
 - Memory/configuration changes: verify paths, Git ignore rules, journal merge attributes, and diff.
 
 ## Verified checkpoint (2026-10-06)
-Claude instructions and all 24 memory files migrated to this file and `docs/agent-memory/`.
-Private-note exclusions, journal union merging, and Build workflow exclusions follow the new paths.
-Local site preview uses `python3 -m http.server 4173 --directory site/public` after a site build.
-Migration changes no app behavior. Historical app, device, deployment, and release claims remain
-dated records; they have not been reverified during this migration.
+- Claude instructions and all 24 memory files migrated to this file and `docs/agent-memory/`.
+- Fork: **focus-launcher-nick**, app ID `com.focus.launcher.nick`; Kotlin namespace remains
+  `com.focus.launcher`. Preserve package ID/signing key and update with `adb install -r`;
+  never uninstall or clear data without explicit permission.
+- The earlier fork install and default-home selection were verified. Subsequent changes are
+  local only: Nick requested no phone update until asked.
+- Appearance: Black / White / Follow system; legacy choices migrate without preference resets.
+- Split clock: matching phone/laptop battery rows with monochrome device icons and charging
+  state. Internet permission is authorized for the configured read-only laptop battery API.
+  Polls only while home is visible/resumed; no app usage/calendar data uploaded.
+- Latest checks: 40 unit tests passed, lint 0 errors (10 warnings), optimized release build,
+  manifest and APK signature passed. API schema checked over HTTPS. No device UI verification
+  of the latest changes. APK: `app/build/outputs/apk/release/app-release.apk`.
+- Upstream site/release scripts still enforce no internet and must not publish this fork.
+  Historical upstream device/deployment/release claims remain dated records.

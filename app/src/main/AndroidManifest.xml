@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Read-only laptop battery status from the configured HTTPS API. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Screen-time numbers, app timers and the weekly review all come from the system usage log. -->
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"

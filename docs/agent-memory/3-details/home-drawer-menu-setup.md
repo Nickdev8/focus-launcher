@@ -179,3 +179,14 @@ main · setup · home · fastapps · drawer · hidden · timers · timerapps · 
 gestures · about. Open one directly: `am start -n com.focus.launcher/.SettingsActivity --es route
 <name>`. Appearance: dark or light, font (sans / serif / mono), text scale, hidden status bar,
 launch animation (fast / system).
+
+## Split-clock laptop battery (Nick fork, 2026-10-06)
+With battery display selected, the split clock shows the local phone reading and a laptop
+reading on the next line, each with a monochrome device outline and charging/not-charging text.
+`DeviceBatteryLines.kt` polls the configured HTTPS endpoint every 30 seconds only while
+the home page is active and the activity is RESUMED. `LaptopBatteryRepository.kt` holds endpoint
+configuration; no payload logging, disk cache, or app-data upload. Missing readings show unavailable,
+disconnected laptops show offline, timestamps older than ten minutes show stale. Requests use
+6-second connection/read timeouts and a 64 KiB limit. Home fit reserves an extra battery row.
+Other clock styles are unchanged. Internet permission is authorized for this feature; fork
+privacy copy reflects it. Upstream publication checks remain incompatible with the fork.

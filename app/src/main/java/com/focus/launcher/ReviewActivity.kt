@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.focus.launcher.service.WeeklyReview
@@ -28,10 +27,9 @@ class ReviewActivity : ComponentActivity() {
             Graph.state.setPendingReview(null)
             WeeklyReview.dismissNotification(this)
         }
-        applyFocusWindow(Graph.settings.value.dark)
+        applyFocusWindow(Graph.settings.value)
         setContent {
             val settings by Graph.settings.flow.collectAsStateWithLifecycle()
-            LaunchedEffect(settings.dark) { applyFocusWindow(settings.dark) }
             FocusTheme(settings) {
                 ReviewScreen(settings = settings, initialWeek = week, onBack = ::finish)
             }

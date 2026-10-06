@@ -17,11 +17,11 @@ original project, not this fork's APK.
 [![Focus: a minimalist launcher for Android](docs/banner.png)](https://how2me.me/focusapp/)
 
 Focus is a minimalist launcher for Android: a text-only home screen built to be looked at as
-little as possible. No icons, no colour: black and white, the time, up to five apps you chose,
+little as possible. No app icons, no colour: black and white, the time, up to five apps you chose,
 and an honest picture of where the day went. It locks social apps and games when their daily time
 is up, and once a week it shows you the week you actually had.
 
-**[Website](https://how2me.me/focusapp/)** · **[Download the APK](https://github.com/patelchaitany/focus-launcher/releases/latest)** (1.3 MB, Android 8.0+) · **[All releases](https://github.com/patelchaitany/focus-launcher/releases)** · free software (GPL-3.0-or-later) · no ads, no account, **no internet permission**
+**[Website](https://how2me.me/focusapp/)** · **[Download the APK](https://github.com/patelchaitany/focus-launcher/releases/latest)** (1.3 MB, Android 8.0+) · **[All releases](https://github.com/patelchaitany/focus-launcher/releases)** · free software (GPL-3.0-or-later) · no ads, no account, **read-only laptop battery API access**
 
 [![Build](https://github.com/patelchaitany/focus-launcher/actions/workflows/build.yml/badge.svg)](https://github.com/patelchaitany/focus-launcher/actions/workflows/build.yml)
 
@@ -135,7 +135,9 @@ decision is visible in "Limited apps" and can be overridden per app.
 Without the accessibility service, timers still work at launch time: a spent app opened from Focus
 shows the wall instead. With it, the wall also comes up mid-session.
 
-The app declares **no INTERNET permission**. Nothing leaves the phone.
+This fork declares **INTERNET permission** to read laptop battery status over HTTPS. It sends
+no app lists, screen time, or calendar data to that API. Upstream publishing scripts still enforce
+the original no-network policy and are not suitable for publishing this fork.
 
 ## Building
 

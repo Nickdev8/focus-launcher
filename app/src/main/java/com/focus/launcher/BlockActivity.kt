@@ -37,7 +37,7 @@ class BlockActivity : ComponentActivity() {
             finish()
             return
         }
-        applyFocusWindow(Graph.settings.value.dark)
+        applyFocusWindow(Graph.settings.value)
         setContent {
             val settings by Graph.settings.flow.collectAsStateWithLifecycle()
             FocusTheme(settings) {

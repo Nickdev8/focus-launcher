@@ -187,7 +187,7 @@ private fun AboutPage(onBack: () -> Unit, go: (String) -> Unit) {
             T("focus-launcher-nick ${BuildConfig.VERSION_NAME}", size = 20.sp, weight = FontWeight.Medium)
             VSpace(12.dp)
             T(
-                "A launcher with nothing to look at. No icons, no colour, no feed: the time, the few apps you " +
+                "A launcher with nothing to look at. No colour, no feed: the time, the few apps you " +
                     "chose, and an honest picture of where your day is going.",
                 size = 16.sp, lineHeight = 24.sp,
             )
@@ -195,7 +195,8 @@ private fun AboutPage(onBack: () -> Unit, go: (String) -> Unit) {
             Label("Privacy")
             VSpace(8.dp)
             T(
-                "Focus has no internet permission, so nothing it knows can leave this phone. Screen time is read " +
+                "This fork uses internet access to read laptop battery status from your device-state API. " +
+                    "No app lists, screen time, or calendar data are sent to that API. Screen time is read " +
                     "from Android's own usage log and stored only in the app's private storage. The timer service " +
                     "sees the name of the app in front and nothing else; it cannot read what is on your screen.",
                 size = 15.sp, color = c.dim, lineHeight = 22.sp,

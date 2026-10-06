@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Graph.settings.value.let { applyFocusWindow(it.dark, it.hideStatusBar) }
+        Graph.settings.value.let { applyFocusWindow(it, it.hideStatusBar) }
         // First start ever: the introduction, once. Marked as seen here already, so that pressing
         // Home in the middle of it never brings it back.
         if (savedInstanceState == null && !Graph.state.tutorialSeen) {
@@ -65,8 +65,7 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             val settings by Graph.settings.flow.collectAsStateWithLifecycle()
-            LaunchedEffect(settings.dark, settings.hideStatusBar) { applyFocusWindow(settings.dark, settings.hideStatusBar) }
-            FocusTheme(settings) { Launcher(settings, homePresses) }
+            FocusTheme(settings, hideStatusBar = settings.hideStatusBar) { Launcher(settings, homePresses) }
         }
     }
 
@@ -198,6 +197,7 @@ private fun Launcher(settings: Settings, homePresses: Flow<Unit>) {
             if (page == 0) {
                 HomeScreen(
                     settings = settings,
+                    active = pager.currentPage == 0 && pager.targetPage == 0,
                     apps = apps,
                     today = today,
                     usageAccess = usageAccess,

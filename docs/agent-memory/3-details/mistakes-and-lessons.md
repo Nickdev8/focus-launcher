@@ -205,3 +205,7 @@ Each entry: symptom → cause → fix / rule. Add to this whenever something cos
 - PSS is not comparable across process ages (95 MB fresh vs 44 MB settled). CPU in a window where
   someone is swiping measures them, not the app. `dumpsys gfxinfo`/`meminfo` themselves cost the
   app a few ms. → Measure with the screen off or during a confirmed quiet window; say which.
+
+## Compose activity access (2026-10-06)
+Lint rejects casting `LocalContext` to an Activity: the context may be wrapped. Use
+`LocalActivity.current as? ComponentActivity` for activity window effects.

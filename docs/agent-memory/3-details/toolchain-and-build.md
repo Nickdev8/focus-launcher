@@ -40,7 +40,8 @@ Compose lints that have bitten: `NonObservableLocale` (use `currentLocale()` fro
 Permissions: PACKAGE_USAGE_STATS, QUERY_ALL_PACKAGES (a launcher must see every app; also lets
 the service resolve any activity), REQUEST_DELETE_PACKAGES, POST_NOTIFICATIONS, READ_CALENDAR,
 EXPAND_STATUS_BAR. Services: the accessibility service and `MediaListener` (notification access,
-optional; see `home-drawer-menu-setup.md`). **No INTERNET**: a public promise (site, README), never add it.
+optional; see `home-drawer-menu-setup.md`). The Nick fork declares INTERNET for the read-only laptop battery API (authorized 2026-10-06).
+The upstream site/release publishing scripts still enforce no INTERNET and must not publish this fork.
 `MainActivity`: HOME + DEFAULT, `singleTask`, `clearTaskOnLaunch`, `excludeFromRecents`,
 `stateAlwaysHidden|adjustResize`, portrait. `SettingsActivity`: own task affinity (`…settings`), or a launcher cannot open it (see
 `mistakes-and-lessons.md`). `BlockActivity`: `singleInstance`, own task affinity,
@@ -55,3 +56,11 @@ line, `./gradlew -Dorg.gradle.java.home=<a JDK 17–21 home> …`, and point at 
 `ANDROID_HOME` or a git-ignored `local.properties` (`sdk.dir=…`). Platform 36 must be installed.
 A portable fix would be Gradle daemon-JVM criteria + the foojay resolver (downloads a JDK); not
 done, and untested whether the 8.14 client even starts under JDK 25.
+
+## Nick's fork build (2026-10-06)
+Application ID is `com.focus.launcher.nick`; namespace stays `com.focus.launcher`. App, settings,
+and service labels identify `focus-launcher-nick`. Settings and block tasks use `${applicationId}`.
+Built with the repository's Gradle 8.14.3 and SDK 36 after downloading missing dependencies.
+`:app:testDebugUnitTest :app:lintDebug :app:assembleRelease` passed: 33 tests, no failures,
+0 lint errors and 10 warnings. APK version was 1.1.55, code 55, signed with the local debug key.
+This separate app does not require or use upstream's distribution signing key.

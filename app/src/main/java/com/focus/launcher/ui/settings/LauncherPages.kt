@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.focus.launcher.data.ThemeChoice
 import com.focus.launcher.Graph
 import com.focus.launcher.data.AppEntry
 import com.focus.launcher.data.CALENDAR_ALL
@@ -326,7 +327,7 @@ internal fun AppearancePage(settings: Settings, onBack: () -> Unit) {
 
     Page("Appearance", onBack) {
         Section("Black and white")
-        SettingRow("Theme", subtitle = "Pure black saves battery on OLED screens.", value = if (settings.dark) "Black" else "White", onClick = { dialog = LookDialog.THEME })
+        SettingRow("Theme", subtitle = "Pure black saves battery on OLED screens.", value = settings.theme.label, onClick = { dialog = LookDialog.THEME })
         SettingRow("Typeface", value = settings.font.label, onClick = { dialog = LookDialog.FONT })
         SettingRow("Text size", value = TEXT_SIZES.firstOrNull { it.first == settings.textScale }?.second ?: "Default", onClick = { dialog = LookDialog.SIZE })
 
@@ -342,7 +343,7 @@ internal fun AppearancePage(settings: Settings, onBack: () -> Unit) {
 
     when (dialog) {
         LookDialog.NONE -> Unit
-        LookDialog.THEME -> ChoiceDialog("Theme", listOf(true to "Black", false to "White"), settings.dark, close) { v -> update { it.copy(dark = v) } }
+        LookDialog.THEME -> ChoiceDialog("Theme", ThemeChoice.entries.map { it to it.label }, settings.theme, close) { v -> update { it.copy(theme = v) } }
         LookDialog.FONT -> ChoiceDialog("Typeface", FontChoice.entries.map { it to it.label }, settings.font, close) { v -> update { it.copy(font = v) } }
         LookDialog.LAUNCH -> ChoiceDialog("Opening apps", LaunchAnimation.entries.map { it to it.label }, settings.launchAnimation, close) { v -> update { it.copy(launchAnimation = v) } }
         LookDialog.SIZE -> ChoiceDialog("Text size", TEXT_SIZES, settings.textScale, close) { v -> update { it.copy(textScale = v) } }

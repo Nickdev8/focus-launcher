@@ -5,7 +5,7 @@ Material, app ID `com.focus.launcher.nick`, Kotlin namespace `com.focus.launcher
 time | the next events or screen time, one line between them), up to 5 fast apps, 2 corner shortcuts.
 Swipe left = searchable app list (sortable; Personal / Work tabs), swipe right = the phone's web
 search, double tap = lock. Social apps and games get daily timers that lock the app; a weekly
-review shows where the time went. No INTERNET permission. Optional: an accessibility service
+review shows where the time went. Internet access reads only the configured laptop battery API; no app usage/calendar data is uploaded. Optional: an accessibility service
 (locks an app mid-session, locks the screen) and a notification listener (the song's name).
 
 **Current maintainer:** Nick. This fork has a separate app identity and independent settings/grants.
@@ -29,8 +29,8 @@ device or what is on his phone lives only in the git-ignored `private/` folder n
 6. **Server changes are surgical:** back up, `sudo nginx -t`, reload, roll back on failure. The
    server is shared with the owner's other projects.
 7. **Never auto-limit communication tools** (mail, browsers, messengers). Never guess towards a limit.
-8. **Everything stays monochrome and icon-free,** including emoji in third-party text. (One drawn
-   exception, asked for by a contributor: the work-profile briefcase, `WorkBadge`.)
+8. **Everything stays monochrome.** Avoid emoji and app icons; drawn device glyphs for phone/laptop
+   batteries are authorized by Nick, alongside the work-profile badge and music controls.
 9. **Do not work around a managed work profile's restrictions** (calendar, usage). Explain the limit.
 10. **Never promise search rankings.** Say what was done and what it depends on.
 11. **The accessibility service and the notification listener stay** (owner, 2026-09-20). PR #11

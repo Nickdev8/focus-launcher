@@ -31,6 +31,7 @@ ui/     theme/ components/ home/ drawer/ block/ review/ settings/   + Launching.
 ## Features and where they live
 | Feature | Where |
 | --- | --- |
+| Split-clock phone/laptop battery rows (percentage, charging state, monochrome device glyphs) | `ui/home/DeviceBatteryLines.kt`, `data/LaptopBatteryRepository.kt` |
 | Clock: split (default), ring (battery or day) or plain; tap/long-press action | `ui/home/HomeWidgets.kt` `HomeClock`, `ClockTapDialog.kt` |
 | Screen time on home: title + total + "N% of today" (of 24 h) below the clock, outside the ring, no setting; tap → review (the 24-hour bar was removed from home; `DayBar` lives on in the review) | `HomeWidgets.kt` `ScreenTimeLine`; height counted in `HomeScreen` `heightOf` |
 | Home layout that always fits | `ui/home/HomeScreen.kt` (`Fit` options, measured constants) |
@@ -50,7 +51,7 @@ ui/     theme/ components/ home/ drawer/ block/ review/ settings/   + Launching.
 | Launch gate (wall / consent before an app opens) | `ui/Launching.kt` `launchApp`, `start`, `launchOptions` |
 | Wall + consent UI | `ui/block/BlockScreen.kt`, `BlockActivity.kt` |
 | Settings pages (12 routes) | `ui/settings/*` ; routes: main setup home fastapps drawer hidden timers timerapps weekly appearance gestures about |
-| Theme, light-up press feedback, edge-to-edge, refresh rate | `ui/theme/Theme.kt` |
+| Black / White / Follow system theme, light-up press feedback, edge-to-edge, refresh rate | `ui/theme/Theme.kt` |
 
 ## Things that are easy to get wrong
 - **Timers work in two layers.** The launcher's gate needs only usage access. Mid-session locking

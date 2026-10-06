@@ -300,6 +300,7 @@ fun SplitClockRow(
     modifier: Modifier = Modifier,
     /** Outline the clock half: a tip is pointing at it. */
     highlight: Boolean = false,
+    active: Boolean = true,
     side: @Composable () -> Unit,
 ) {
     val c = LocalFocusColors.current
@@ -346,8 +347,7 @@ fun SplitClockRow(
             }
             if (showBattery) {
                 VSpace(4.dp)
-                val urgent = battery.percent <= 15 && !battery.charging
-                T(batteryLine(battery, "  ·  "), size = 12.sp, color = if (urgent) c.fg else c.faint, maxLines = 1)
+                DeviceBatteryLines(battery, active)
             }
         }
         Box(Modifier.weight(1f)) { side() }

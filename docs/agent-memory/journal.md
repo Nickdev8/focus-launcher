@@ -833,3 +833,47 @@ checked active memory pointers, private-file ignore rules, public-file trackabil
 AGENTS.md documentation. App tests were not run: no application code changed.
 **Open:** changes are local, uncommitted. Historical device, release, and deployment claims
 have not been reverified; no private notes or Claude tool configurations existed to migrate.
+
+## 2026-10-06 · Rename and install Nick's fork
+
+**Asked:** rename the app to `focus-launcher-nick` and install it over ADB for use instead
+of the upstream project.
+**Done:** assigned separate app ID `com.focus.launcher.nick`, renamed app/settings/service
+labels, project name, welcome and settings headings; isolated task affinities through
+`${applicationId}`. Documented fork builds and updated ADB examples. Preserved Kotlin
+namespace and upstream attribution. Removed a stray inherited conflict marker from app memory.
+**Verified:** 33 unit tests passed, lint 0 errors/10 warnings, optimized release build
+successful; APK package/labels/task affinities and signature checked. ADB installation
+succeeded and the fork's Setup activity launched successfully. No original app was uninstalled.
+**Final verification:** Android reported `com.focus.launcher.nick` as the default home after
+the user selected it. Recent crash buffer contained zero entries for the fork.
+**Open:** optional permission grants require the user's on-phone choice; settings/grants are
+separate from upstream. Changes remain uncommitted.
+
+## 2026-10-06 · Follow system theme (local only)
+
+**Asked:** add Follow system alongside Black and White in Appearance → Theme; do not update
+the phone. Preserve preferences on future app updates.
+**Done:** added persisted `ThemeChoice`, migrated legacy `dark` booleans while retaining other
+settings, and centralized reactive palette/window updates across home, settings, review, and
+the timer wall. System mode follows Android night configuration; explicit modes stay fixed.
+**Verified:** 36 unit tests passed, including legacy migration, settings round trips, and theme
+resolution for light/dark system states. Lint passed with 0 errors/10 existing warnings after
+using Compose LocalActivity for window effects. `git diff --check` passed.
+**Open:** no ADB commands or phone installation performed. Live theme switching has not been
+verified on a device. Changes remain uncommitted.
+
+## 2026-10-06 · Split-clock laptop battery integration (local only)
+
+**Asked:** below the phone battery, show the laptop battery and charging state from the
+provided device-state API; add matching monochrome phone/laptop icons.
+**Done:** added read-only bounded HTTPS repository and parser; lifecycle/home-visible polling
+every 30 seconds; separate local phone and remote laptop rows; offline/stale/unavailable
+handling; increased fit height for the added row. Added INTERNET permission and corrected
+fork privacy copy and memory. User's API/icon request overrides upstream no-network/icon rules.
+**Verified:** live HTTPS endpoint reachable and expected field types confirmed without public
+payload logging. 40 tests passed including fabricated parser/freshness cases; lint 0 errors,
+10 warnings; optimized release build, fork manifest/permission, APK signature and diff checks
+passed. Dedicated worker owned repository/parser tests; parent handled UI and integration.
+**Open:** no phone update or device UI verification; changes remain uncommitted. Upstream
+publication scripts still reject internet-enabled APKs and are not for this fork.
